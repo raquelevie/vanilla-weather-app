@@ -30,6 +30,7 @@ li {
   margin: 20px auto;
   border-radius: 10px;
   max-width: 600px;
+  margin-bottom: 0px;
 }
 
 .weather-icon {
@@ -52,4 +53,10 @@ li {
 
 .search-form {
   margin-bottom: 20px;
+}
+.open-source {
+  max-width: 600px;
+  display: block;
+  margin: 20px auto;
+  margin-top: 0px;
 }
