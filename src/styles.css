@@ -23,6 +23,7 @@ li {
   height: 19px;
   line-height: 1;
   list-style: none;
+  text-transform: capitalize;
 }
 
 .weather-app {
@@ -66,7 +67,4 @@ li {
   display: block;
   margin: 20px auto;
   margin-top: 0px;
-}
-.description {
-  text-transform: capitalize;
 }
