@@ -67,3 +67,6 @@ li {
   margin: 20px auto;
   margin-top: 0px;
 }
+.description {
+  text-transform: capitalize;
+}

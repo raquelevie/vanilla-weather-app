@@ -2,12 +2,22 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentHumidity = response.data.main.humidity;
   let currentWind = response.data.wind.speed;
-  console.log(temperature);
+  let currentIcon = document.querySelector("#icon");
+  let currentDescription = document.querySelector("#description");
+
+  //response.data.weather[0].icon;
+  console.log(response.data.weather[0].description);
 
   cityName.innerHTML = `${searchName.value}`;
+  currentDescription.innerHTML = `${response.data.weather[0].description}`;
   currentTemp.innerHTML = `${temperature}`;
   hum.innerHTML = `${currentHumidity}`;
   win.innerHTML = `${currentWind}`;
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 function showPosition(position) {
   console.log(position.coords.latitude);
