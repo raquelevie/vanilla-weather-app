@@ -1,12 +1,10 @@
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+  let temperature = Math.round(celsiusTemp);
   let currentHumidity = response.data.main.humidity;
   let currentWind = response.data.wind.speed;
   let currentIcon = document.querySelector("#icon");
   let currentDescription = document.querySelector("#description");
-
-  //response.data.weather[0].icon;
-  console.log(response.data.weather[0].description);
 
   cityName.innerHTML = `${searchName.value}`;
   currentDescription.innerHTML = `${response.data.weather[0].description}`;
@@ -20,9 +18,6 @@ function showTemperature(response) {
   currentIcon.setAttribute("alt", response.data.weather[0].description);
 }
 function showPosition(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-
   axios
     .get(
       `${apiUrl}lon=${position.coords.longitude}&lat=${position.coords.latitude}&appid=${apiKey}&units=metric`
@@ -59,16 +54,31 @@ function currentTime() {
   let currentHour = now.getHours();
   dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
 }
+function convertFahrenheit(event) {
+  event.addEventListener;
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
+  currentTemp.innerHTML = `${fahrenheitTemp}`;
+}
+function convertCelsius(event) {
+  event.addEventListener;
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  currentTemp.innerHTML = `${Math.round(celsiusTemp)}`;
+}
 let cityName = document.querySelector("#city");
-console.log(cityName);
 let searchName = document.querySelector("#city-input");
 let hum = document.querySelector("#humidity");
 let win = document.querySelector("#wind");
-console.log(hum);
 let searchCity = document.querySelector("#search-form");
 let currentCity = document.querySelector("#current-location-button");
+let celsiusTemp = null;
+
 searchCity.addEventListener("submit", search);
 currentCity.addEventListener("click", current);
+fahrenheit.addEventListener("click", convertFahrenheit);
+celsius.addEventListener("click", convertCelsius);
 let dateTime = document.querySelector("#date");
 currentTime();
 let currentTemp = document.querySelector("#temperature");

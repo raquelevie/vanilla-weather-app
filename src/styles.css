@@ -33,11 +33,7 @@ li {
   border-radius: 10px;
   max-width: 600px;
   margin-bottom: 0px;
-  background: linear-gradient(
-    89.8deg,
-    rgb(39, 115, 255) 4.3%,
-    rgb(62, 211, 232) 101.4%
-  );
+  background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 
 .weather-icon {
@@ -67,4 +63,13 @@ li {
   display: block;
   margin: 20px auto;
   margin-top: 0px;
+}
+.active {
+  color: white;
+  cursor: default;
+}
+
+.active:hover {
+  color: white;
+  text-decoration: none;
 }
