@@ -1,3 +1,10 @@
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "adb7ae5bb76c11b5c643833eb2dfec01";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function showTemperature(response) {
   celsiusTemp = response.data.main.temp;
   let temperature = Math.round(celsiusTemp);
@@ -16,6 +23,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   currentIcon.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 function showPosition(position) {
   axios
@@ -102,8 +111,6 @@ let win = document.querySelector("#wind");
 let searchCity = document.querySelector("#search-form");
 let currentCity = document.querySelector("#current-location-button");
 let celsiusTemp = null;
-
-displayForecast();
 
 searchCity.addEventListener("submit", search);
 currentCity.addEventListener("click", current);
