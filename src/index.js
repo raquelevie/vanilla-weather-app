@@ -5,6 +5,7 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 function showTemperature(response) {
+  currentTime();
   celsiusTemp = response.data.main.temp;
   let temperature = Math.round(celsiusTemp);
   let currentHumidity = response.data.main.humidity;
@@ -51,7 +52,7 @@ function searchCityName(city) {
 }
 
 function currentTime() {
-  navigator.geolocation.getCurrentPosition(showPosition);
+  /*navigator.geolocation.getCurrentPosition(showPosition);*/
   let now = new Date();
   let currentDay = now.getDay();
   let Days = [
@@ -63,7 +64,7 @@ function currentTime() {
     "Friday",
     "Saturday",
   ];
-  cityName.innerHTML = `${searchName.value}`;
+  /*cityName.innerHTML = `${searchName.value}`;*/
   let day = Days[currentDay];
   let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
   let currentHour = now.getHours();
