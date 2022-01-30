@@ -44,6 +44,11 @@ function current(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+function searchCityName(city) {
+  let apiKey = "adb7ae5bb76c11b5c643833eb2dfec01";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
 
 function currentTime() {
   navigator.geolocation.getCurrentPosition(showPosition);
@@ -135,7 +140,8 @@ currentCity.addEventListener("click", current);
 fahrenheit.addEventListener("click", convertFahrenheit);
 celsius.addEventListener("click", convertCelsius);
 let dateTime = document.querySelector("#date");
-currentTime();
+searchCityName("Budapest");
+/*currentTime();*/
 let currentTemp = document.querySelector("#temperature");
 
 let apiKey = "adb7ae5bb76c11b5c643833eb2dfec01";
