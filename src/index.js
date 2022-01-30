@@ -1,8 +1,7 @@
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "adb7ae5bb76c11b5c643833eb2dfec01";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayForecast);
 }
 function showTemperature(response) {
@@ -13,7 +12,7 @@ function showTemperature(response) {
   let currentIcon = document.querySelector("#icon");
   let currentDescription = document.querySelector("#description");
 
-  cityName.innerHTML = `${searchName.value}`;
+  cityName.innerHTML = `${response.data.name}`;
   currentDescription.innerHTML = `${response.data.weather[0].description}`;
   currentTemp.innerHTML = `${temperature}`;
   hum.innerHTML = `${currentHumidity}`;
@@ -45,8 +44,9 @@ function current(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-navigator.geolocation.getCurrentPosition(showPosition);
+
 function currentTime() {
+  navigator.geolocation.getCurrentPosition(showPosition);
   let now = new Date();
   let currentDay = now.getDay();
   let Days = [
@@ -58,10 +58,11 @@ function currentTime() {
     "Friday",
     "Saturday",
   ];
+  cityName.innerHTML = `${searchName.value}`;
   let day = Days[currentDay];
   let currentMinute = `${now.getMinutes()}`.padStart(2, "0");
   let currentHour = now.getHours();
-  dateTime.innerHTML = `${day} ${currentHour}:${currentMinute}`;
+  dateTime.innerHTML = `Last updated: ${day} ${currentHour}:${currentMinute}`;
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
