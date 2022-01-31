@@ -6,6 +6,8 @@ function getForecast(coordinates) {
 }
 function showTemperature(response) {
   currentTime();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
   celsiusTemp = response.data.main.temp;
   let temperature = Math.round(celsiusTemp);
   let currentHumidity = response.data.main.humidity;
